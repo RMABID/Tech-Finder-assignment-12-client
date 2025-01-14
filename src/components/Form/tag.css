@@ -1,0 +1,19 @@
+.ReactTags__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.ReactTags__tag {
+    background: #c2d7ec;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.ReactTags__remove {
+    cursor: pointer;
+    margin-left: 5px;
+    color: red;
+    font-weight: bold;
+}
