@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
 import { IoMdLogIn } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
+import logo from "../../assets/logo.jpeg";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -9,7 +10,8 @@ const Navbar = () => {
     <nav className="border-b fixed w-full z-50">
       <div className="flex py-4 items-center justify-evenly">
         <div>
-          <Link to={"/"} className="text-2xl font-bold">
+          <Link to={"/"} className="text-2xl flex items-center font-bold">
+            <img className="w-14 border rounded-full p-1" src={logo} alt="" />
             Product Hunt
           </Link>
         </div>
@@ -43,7 +45,9 @@ const Navbar = () => {
                   <p>{user?.displayName}</p>
                 </li>
                 <li>
-                  <Link className="justify-between">Dashboard</Link>
+                  <Link to={"/dashboard"} className="justify-between">
+                    Dashboard
+                  </Link>
                 </li>
 
                 <li className="mt-3">

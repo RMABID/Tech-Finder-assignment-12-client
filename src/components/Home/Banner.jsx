@@ -1,9 +1,10 @@
-
-
+import banner from "../../assets/images.png";
 const Banner = () => {
   return (
-    <div>Banner</div>
-  )
-}
+    <div>
+      <img className="w-full" src={banner} alt="" />
+    </div>
+  );
+};
 
-export default Banner
+export default Banner;

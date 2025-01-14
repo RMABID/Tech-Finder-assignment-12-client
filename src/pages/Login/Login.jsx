@@ -1,12 +1,12 @@
 import { IoLogoGithub, IoLogoGoogle } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
-
-import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { loading, signIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -16,6 +16,7 @@ const Login = () => {
 
     try {
       await signIn(email, password);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -73,7 +74,7 @@ const Login = () => {
               </div>
             </form>
             <p className="text-center text-[#D1A054] text-md font-medium">
-              New here? Create a New Account
+              New here? <Link className="text-red-500" to={"/register"}>Create a New Account</Link>
             </p>
             <p className="text-center text-black my-2">Or sign in with</p>
             <div
