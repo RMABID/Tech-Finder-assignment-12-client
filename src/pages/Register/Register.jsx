@@ -6,11 +6,12 @@ import { IoLogoGithub, IoLogoGoogle } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import imageUpload from "../../api/utils";
+import toast from "react-hot-toast";
 
 // import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const { createUser, updateUserProfile, loading } = useAuth();
+  const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   //   const from = location.state?.from?.pathname || "/";
@@ -27,8 +28,18 @@ const Register = () => {
     try {
       const result = await createUser(email, password);
       await updateUserProfile(name, photoURL);
+      toast.success("SuccessFully Login");
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await loginGoogle();
+      toast.success("SuccessFully Login");
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -104,7 +115,10 @@ const Register = () => {
               </div>
             </form>
             <p className="text-center text-[#D1A054] text-md font-medium">
-              Already registered? <Link className="text-red-500" to={"/login"}>Go to log in</Link>
+              Already registered?{" "}
+              <Link className="text-red-500" to={"/login"}>
+                Go to log in
+              </Link>
             </p>
             <p className="text-center text-black my-2">Or sign in with</p>
             <div
@@ -114,7 +128,10 @@ const Register = () => {
               <p className="border hover:bg-[#D1A054] hover:scale-150 transition-all duration-500 ease-in-out hover:border-purple-500 hover:text-white cursor-pointer p-1 rounded-full border-black text-sm ">
                 <FaFacebookF />
               </p>
-              <p className="border hover:bg-[#D1A054] hover:scale-150 transition-all duration-500 ease-in-out hover:border-purple-500 hover:text-white cursor-pointer p-1 rounded-full border-black text-sm ">
+              <p
+                onClick={handleGoogleLogin}
+                className="border hover:bg-[#D1A054] hover:scale-150 transition-all duration-500 ease-in-out hover:border-purple-500 hover:text-white cursor-pointer p-1 rounded-full border-black text-sm "
+              >
                 <IoLogoGoogle />
               </p>
               <p className="border hover:bg-[#D1A054] hover:scale-150 transition-all duration-500 ease-in-out hover:border-purple-500 hover:text-white cursor-pointer p-1 rounded-full border-black text-sm ">

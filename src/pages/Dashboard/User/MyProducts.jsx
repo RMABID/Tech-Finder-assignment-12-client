@@ -18,7 +18,7 @@ const MyProducts = () => {
       return data;
     },
   });
-  console.log(products);
+  if (isLoading) return <p>hi i,m coming</p>;
   return (
     <div>
       <div className="overflow-x-auto">
@@ -38,7 +38,6 @@ const MyProducts = () => {
               <UserProductTable key={index} item={item} />
             ))}
           </tbody>
-          \
         </table>
       </div>
     </div>

@@ -2,7 +2,7 @@ import useAuth from "../../../hooks/useAuth";
 
 const MyProfile = () => {
   const { user } = useAuth();
-  console.log(user);
+
   return (
     <section className="">
       <div className="flex bg-green-300 p-4 w-10/12 gap-x-12">
