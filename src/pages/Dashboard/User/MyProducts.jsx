@@ -14,7 +14,8 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/products/${user?.email}`);
+        const { data } = await axiosSecure(`/products/${user?.email}`);
+    //   const { data } = await axiosSecure(`/featured-products`);
       return data;
     },
   });
