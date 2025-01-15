@@ -71,11 +71,7 @@ const Sidebar = () => {
               <User />
               <Moderator />
               <Admin />
-              <MenuItem
-                icon={BsGraphUp}
-                label="Statistics"
-                address="/dashboard"
-              />
+             
             </nav>
           </div>
         </div>
