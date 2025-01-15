@@ -25,13 +25,14 @@ const AddProduct = () => {
       external_links,
       description,
       tags,
+      vote: parseInt(0),
       owner_info: {
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
       },
     };
-    console.table(newProduct);
+    // console.table(newProduct);
     try {
       await axiosSecure.post("/products", newProduct);
     } catch (error) {

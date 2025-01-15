@@ -43,11 +43,14 @@ const MyProducts = () => {
                 <UserProductTable key={index} item={item} />
               ) : null
             )} */}
-            {products
+            {/* {products
               .filter((item) => item.status === "Pending")
               .map((item, index) => (
                 <UserProductTable key={index} item={item} />
-              ))}
+              ))} */}
+            {products.map((item, index) => (
+              <UserProductTable key={index} item={item} />
+            ))}
           </tbody>
         </table>
       </div>
