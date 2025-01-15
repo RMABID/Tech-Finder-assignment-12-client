@@ -1,14 +1,11 @@
 import { TbFidgetSpinner } from "react-icons/tb";
-// import login_img from "../../assets/others/authentication2.png";
-// import useAuth from "../../hooks/useAuth";
 import { FaFacebookF } from "react-icons/fa";
 import { IoLogoGithub, IoLogoGoogle } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import imageUpload from "../../api/utils";
 import toast from "react-hot-toast";
-
-// import { useForm } from "react-hook-form";
+import signup_img from "../../assets/logo/Sign up-rafiki.png";
 
 const Register = () => {
   const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();
@@ -44,9 +41,9 @@ const Register = () => {
   };
 
   return (
-    <div className="">
+    <div className="bg-login_bg bg-center bg-cover bg-no-repeat">
       <div className="py-24">
-        <div className="md:flex justify-center w-10/12 py-12 mx-auto  shrink-0 shadow-xl">
+        <div className="md:flex bg-white md:w-[960px] rounded-xl px-8 justify-center  py-6 mx-auto  shrink-0 shadow-xl">
           <div className="  w-full max-w-sm">
             <form onSubmit={handleSignRegister} className="card-body">
               <div className="form-control">
@@ -140,7 +137,13 @@ const Register = () => {
             </div>
           </div>
           <div className="text-center lg:text-left">
-            <img src="" alt="" />
+            <img className="w-full" src={signup_img} alt="" />
+            <Link
+              to={"/"}
+              className="text-center flex justify-center btn w-40 mx-auto"
+            >
+              Back to Home
+            </Link>
           </div>
         </div>
       </div>

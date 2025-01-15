@@ -3,6 +3,7 @@ import { FcViewDetails } from "react-icons/fc";
 import { FiEdit } from "react-icons/fi";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ReviewTable = ({ item, handleAcceptPost, handleAddFeatured }) => {
   const { status, product_name, _id, featured } = item;
@@ -10,9 +11,9 @@ const ReviewTable = ({ item, handleAcceptPost, handleAddFeatured }) => {
     <tr>
       <td>{product_name}</td>
       <td>
-        <button className="btn">
+        <Link to={`/product-details/${_id}`} className="btn">
           <FcViewDetails />
-        </button>
+        </Link>
       </td>
       <td>
         <button onClick={() => handleAddFeatured(_id)} className="btn">

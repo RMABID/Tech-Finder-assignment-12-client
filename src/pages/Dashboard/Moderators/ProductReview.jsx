@@ -37,7 +37,7 @@ const ProductReview = () => {
       toast.success("Successfully added Featured Product");
       refetch();
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data);
     }
   };
 

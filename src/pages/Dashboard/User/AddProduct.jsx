@@ -4,6 +4,7 @@ import imageUpload from "../../../api/utils";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import bg from "../../../assets/img/add product img.jpeg";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -41,10 +42,9 @@ const AddProduct = () => {
       toast.error(error.message);
     }
   };
-
+  // className="w-full py-96" style={{ backgroundImage: `url(${bg})` }}
   return (
-    <div>
-      <h1>Add Product</h1>
+    <div className="flex justify-center items-center h-screen">
       <AddProductForm
         tags={tags}
         setTags={setTags}

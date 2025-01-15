@@ -26,18 +26,17 @@ const MyProducts = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table border">
           {/* head */}
-          <thead>
+          <thead className="h-16 text-[15px] text-center">
             <tr>
-              <th>Image</th>
               <th>Name</th>
               <th>Votes</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-center ">
             {/* {products.map((item, index) =>
               item.status === "Pending" ? (
                 <UserProductTable key={index} item={item} />

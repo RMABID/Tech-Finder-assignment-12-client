@@ -4,6 +4,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import login_img from "../../assets/logo/Enter OTP-amico.png";
 
 const Login = () => {
   const { loading, signIn, loginGoogle } = useAuth();
@@ -33,13 +34,19 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div className="bg-login_bg bg-center bg-cover bg-no-repeat h-screen">
       <div className="py-24">
-        <div className="md:flex w-10/12 py-12 mx-auto  shrink-0 shadow-xl">
-          <div className="text-center lg:text-left">
-            <img src="" alt="" />
+        <div className="md:flex bg-white md:w-[960px] rounded-xl py-12 mx-auto justify-evenly shrink-0 shadow-2xl">
+          <div className="text-center  lg:text-left">
+            <img className=" w-full max-w-sm" src={login_img} alt="" />
+            <Link
+              to={"/"}
+              className="text-center flex mt-10 justify-center btn w-40 mx-auto"
+            >
+              Back to Home
+            </Link>
           </div>
-          <div className="  w-full max-w-sm">
+          <div className=" w-full max-w-sm">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">

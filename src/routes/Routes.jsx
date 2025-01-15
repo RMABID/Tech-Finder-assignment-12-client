@@ -10,6 +10,7 @@ import MyProducts from "../pages/Dashboard/User/MyProducts";
 import ProductReview from "../pages/Dashboard/Moderators/ProductReview";
 import ReportContent from "../pages/Dashboard/Moderators/ReportContent";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import ProductDetails from "../components/ProductDetails/ProductDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/product-details/:id",
+        element: <ProductDetails />,
       },
     ],
   },
