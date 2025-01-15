@@ -3,8 +3,8 @@ import { MdOutlineHowToVote } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ item, handleVote }) => {
-  const { product_name, product_image, tags, vote, _id } = item;
-  console.log(vote);
+  const { product_name, product_image, tags, vote, _id,  } = item;
+
   return (
     <section>
       <div className="flex gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300 border-2 border-gray-700 p-2">

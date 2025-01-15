@@ -31,6 +31,16 @@ const ProductReview = () => {
     }
   };
 
+  const handleAddFeatured = async (_id) => {
+    try {
+      await axiosSecure.patch(`/featured-products/${_id}`);
+      toast.success("Successfully added Featured Product");
+      refetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -48,6 +58,7 @@ const ProductReview = () => {
             {products.map((item, index) => (
               <ReviewTable
                 handleAcceptPost={handleAcceptPost}
+                handleAddFeatured={handleAddFeatured}
                 key={index}
                 item={item}
               />

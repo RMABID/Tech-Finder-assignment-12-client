@@ -2,9 +2,10 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
 import { FiEdit } from "react-icons/fi";
 import { IoMdCheckmark } from "react-icons/io";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
-const ReviewTable = ({ item, handleAcceptPost }) => {
-  const { status, product_name, _id } = item;
+const ReviewTable = ({ item, handleAcceptPost, handleAddFeatured }) => {
+  const { status, product_name, _id, featured } = item;
   return (
     <tr>
       <td>{product_name}</td>
@@ -14,8 +15,12 @@ const ReviewTable = ({ item, handleAcceptPost }) => {
         </button>
       </td>
       <td>
-        <button className="btn">
-          <IoMdCheckmark />
+        <button onClick={() => handleAddFeatured(_id)} className="btn">
+          {featured && featured === "Added" ? (
+            <IoCheckmarkDoneSharp />
+          ) : (
+            <IoMdCheckmark />
+          )}
         </button>
       </td>
       <th>

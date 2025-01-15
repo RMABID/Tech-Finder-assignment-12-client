@@ -25,10 +25,15 @@ const FeaturedProducts = () => {
   };
   console.log(product);
   return (
-    <section className="grid gap-8 grid-cols-2">
-      {product.map((item, index) => (
-        <FeaturedCard handleVote={handleVote} key={index} item={item} />
-      ))}
+    <section>
+      <h1 className="text-center text-4xl my-3">Featured Products</h1>
+      <div className="grid gap-8 grid-cols-2">
+        {product
+          .filter((item) => item.featured === "Added")
+          .map((item, index) => (
+            <FeaturedCard handleVote={handleVote} key={index} item={item} />
+          ))}
+      </div>
     </section>
   );
 };

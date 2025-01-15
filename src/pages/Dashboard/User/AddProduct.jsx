@@ -2,8 +2,8 @@ import { useState } from "react";
 import AddProductForm from "../../../components/Form/AddProductForm";
 import imageUpload from "../../../api/utils";
 import useAuth from "../../../hooks/useAuth";
-import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -35,8 +35,10 @@ const AddProduct = () => {
     // console.table(newProduct);
     try {
       await axiosSecure.post("/products", newProduct);
+      toast.success("Product Successfully Added");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(error.message);
     }
   };
 
