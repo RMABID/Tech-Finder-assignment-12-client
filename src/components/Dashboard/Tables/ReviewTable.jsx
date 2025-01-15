@@ -3,20 +3,36 @@ import { FcViewDetails } from "react-icons/fc";
 import { FiEdit } from "react-icons/fi";
 import { IoMdCheckmark } from "react-icons/io";
 
-const ReviewTable = ({ item }) => {
-  const { product_image, product_name, _id } = item;
+const ReviewTable = ({ item, handleAcceptPost }) => {
+  const { status, product_name, _id } = item;
   return (
     <tr>
       <td>{product_name}</td>
-      <td><button className="btn"><FcViewDetails /></button></td>
-      <td><button className="btn"><IoMdCheckmark /></button></td>
+      <td>
+        <button className="btn">
+          <FcViewDetails />
+        </button>
+      </td>
+      <td>
+        <button className="btn">
+          <IoMdCheckmark />
+        </button>
+      </td>
       <th>
-        <div className="flex items-center justify-start">
-          <button className="btn btn-ghost ">
-            <FiEdit />
+        <div className="flex items-center gap-x-2 justify-center">
+          <button
+            disabled={status === "Accepted"}
+            onClick={() => handleAcceptPost(_id, "Accepted")}
+            className="btn disabled:cursor-not-allowed btn-ghost bg-green-400 "
+          >
+            Accept
           </button>
-          <button className="btn btn-ghost ">
-            <FaRegTrashAlt />
+          <button
+            disabled={status === "Rejected"}
+            onClick={() => handleAcceptPost(_id, "Rejected")}
+            className="btn btn-ghost disabled:cursor-not-allowed text-white bg-red-500"
+          >
+            Reject
           </button>
         </div>
       </th>

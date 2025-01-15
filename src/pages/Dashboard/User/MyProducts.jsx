@@ -14,11 +14,14 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
-        const { data } = await axiosSecure(`/products/${user?.email}`);
-    //   const { data } = await axiosSecure(`/featured-products`);
+      const { data } = await axiosSecure(`/products/${user?.email}`);
+      //   const { data } = await axiosSecure(`/featured-products`);
       return data;
     },
   });
+
+  // const acceptProducts = products.map(item);
+
   if (isLoading) return <p>hi i,m coming</p>;
   return (
     <div>
@@ -35,9 +38,16 @@ const MyProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((item, index) => (
-              <UserProductTable key={index} item={item} />
-            ))}
+            {/* {products.map((item, index) =>
+              item.status === "Pending" ? (
+                <UserProductTable key={index} item={item} />
+              ) : null
+            )} */}
+            {products
+              .filter((item) => item.status === "Pending")
+              .map((item, index) => (
+                <UserProductTable key={index} item={item} />
+              ))}
           </tbody>
         </table>
       </div>

@@ -2,7 +2,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 
 const UserProductTable = ({ item }) => {
-  const { product_image, product_name, _id } = item;
+  const { product_image, product_name, _id, status } = item;
   return (
     <tr>
       <td>
@@ -12,7 +12,7 @@ const UserProductTable = ({ item }) => {
       </td>
       <td>{product_name}</td>
       <td>5</td>
-      <td>coming</td>
+      <td>{status}</td>
       <th>
         <div className="flex items-center justify-start">
           <button className="btn btn-ghost ">

@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ReviewTable from "../../../components/Dashboard/Tables/ReviewTable";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ProductReview = () => {
   const { user } = useAuth();
@@ -18,13 +20,23 @@ const ProductReview = () => {
       return data;
     },
   });
-  console.log(products);
+  //status change with moderator
+  const handleAcceptPost = async (_id, status) => {
+    try {
+      await axiosSecure.patch(`/product/${_id}`, { status });
+      refetch();
+      toast.success(status);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table border">
           {/* head */}
-          <thead>
+          <thead className="h-16 text-[15px] text-center">
             <tr>
               <th>Name</th>
               <th>View Details</th>
@@ -32,9 +44,13 @@ const ProductReview = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-center">
             {products.map((item, index) => (
-              <ReviewTable key={index} item={item} />
+              <ReviewTable
+                handleAcceptPost={handleAcceptPost}
+                key={index}
+                item={item}
+              />
             ))}
           </tbody>
         </table>
