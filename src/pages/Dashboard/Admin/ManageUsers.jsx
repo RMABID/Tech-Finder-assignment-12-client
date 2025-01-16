@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UsersTable from "../../../components/Dashboard/Tables/UsersTable";
-import { useState } from "react";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const [action, setAction] = useState("user");
-  const { data: user = [] } = useQuery({
+
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const { data } = await axiosSecure("/users");
       return data;
     },
   });
-  console.log(action);
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -23,12 +26,13 @@ const ManageUsers = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody className="text-center ">
-            {user.map((item, index) => (
-              <UsersTable setAction={setAction} key={index} item={item} />
+            {users.map((item, index) => (
+              <UsersTable refetch={refetch} key={index} item={item} />
             ))}
           </tbody>
         </table>
