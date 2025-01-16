@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ReviewTable from "../../../components/Dashboard/Tables/ReviewTable";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const ProductReview = () => {
