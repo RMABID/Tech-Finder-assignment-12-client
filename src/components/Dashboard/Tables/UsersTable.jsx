@@ -1,18 +1,15 @@
-import React from "react";
-import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UsersTable = ({ item, refetch }) => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
   const { name, email, role } = item;
   const handelRole = async (value) => {
     if (value === role) {
       return toast.error(`Already Added ${role}`);
     }
     try {
-      await axiosSecure.patch(`/user/${user?.email}`, { role: value });
+      await axiosSecure.patch(`/user/${email}`, { role: value });
       refetch();
       toast.success("Role Updated Successfully");
     } catch (error) {

@@ -2,16 +2,33 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const UserProductTable = ({ item, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { product_name, _id, status, vote } = item;
   const handleDeletePost = async () => {
-    console.log(_id);
     try {
-      await axiosSecure.delete(`/product/delete/${_id}`);
-      toast.success("Post delete successfully");
-      refetch();
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your post has been deleted.",
+            icon: "success",
+          });
+          axiosSecure.delete(`/product/delete/${_id}`);
+          toast.success("Post delete successfully");
+          refetch();
+        }
+      });
     } catch (error) {
       console.log(error);
     }
@@ -29,9 +46,9 @@ const UserProductTable = ({ item, refetch }) => {
       </td>
       <th>
         <div className="flex items-center justify-center">
-          <button className="btn btn-ghost ">
+          <Link to={`/dashboard/my-product/${_id}`} className="btn btn-ghost ">
             <FiEdit />
-          </button>
+          </Link>
           <button onClick={handleDeletePost} className="btn btn-ghost ">
             <FaRegTrashAlt />
           </button>

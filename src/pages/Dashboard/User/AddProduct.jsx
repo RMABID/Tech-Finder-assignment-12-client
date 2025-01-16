@@ -27,7 +27,7 @@ const AddProduct = () => {
       product_image,
       external_links,
       description,
-      tags,
+      tag: tags,
       vote: parseInt(0),
       status: "Pending",
       owner_info: {

@@ -11,6 +11,7 @@ import ProductReview from "../pages/Dashboard/Moderators/ProductReview";
 import ReportContent from "../pages/Dashboard/Moderators/ReportContent";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
+import ProductUpdate from "../components/Dashboard/UpdatedPages/ProductUpdate";
 
 const Routes = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const Routes = createBrowserRouter([
       {
         path: "my-product",
         element: <MyProducts />,
+      },
+      {
+        path: "my-product/:id",
+        element: <ProductUpdate />,
       },
       {
         path: "product-review",

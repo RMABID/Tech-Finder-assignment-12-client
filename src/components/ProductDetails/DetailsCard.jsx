@@ -11,7 +11,7 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
     product_name,
     external_links,
     description,
-    tags,
+    tag,
     vote,
   } = product;
   return (
@@ -22,7 +22,7 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
           <div>
             <h3 className="text-xl mt-3 font-bold">{product_name}</h3>
             <div className="flex items-center gap-x-3">
-              {tags?.map((item, index) => (
+              {tag?.map((item, index) => (
                 <Link key={index} className="underline">
                   {item.text}
                 </Link>

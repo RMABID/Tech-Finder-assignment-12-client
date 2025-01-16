@@ -3,7 +3,7 @@ import { MdOutlineHowToVote } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ item, handleVote }) => {
-  const { product_name, product_image, tags, vote, _id,  } = item;
+  const { product_name, product_image, tag, vote, _id,  } = item;
 
   return (
     <section>
@@ -22,7 +22,7 @@ const FeaturedCard = ({ item, handleVote }) => {
               </span>{" "}
             </Link>
             <div className="flex gap-x-3">
-              {tags.map((item, index) => (
+              {tag.map((item, index) => (
                 <Link key={index} className="underline">
                   {item?.text}
                 </Link>
