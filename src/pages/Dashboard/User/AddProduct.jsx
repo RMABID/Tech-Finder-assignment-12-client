@@ -5,11 +5,13 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import bg from "../../../assets/img/add product img.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [tags, setTags] = useState([]);
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const handleAddProduct = async (event) => {
     event.preventDefault();
@@ -27,6 +29,7 @@ const AddProduct = () => {
       description,
       tags,
       vote: parseInt(0),
+      status: "Pending",
       owner_info: {
         name: user?.displayName,
         email: user?.email,
@@ -37,6 +40,7 @@ const AddProduct = () => {
     try {
       await axiosSecure.post("/products", newProduct);
       toast.success("Product Successfully Added");
+      navigate("/dashboard/my-product");
     } catch (error) {
       // console.log(error);
       toast.error(error.message);

@@ -8,6 +8,9 @@ const UsersTable = ({ item, refetch }) => {
   const { user } = useAuth();
   const { name, email, role } = item;
   const handelRole = async (value) => {
+    if (value === role) {
+      return toast.error(`Already Added ${role}`);
+    }
     try {
       await axiosSecure.patch(`/user/${user?.email}`, { role: value });
       refetch();

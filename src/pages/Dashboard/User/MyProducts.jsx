@@ -15,12 +15,10 @@ const MyProducts = () => {
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/products/${user?.email}`);
-      //   const { data } = await axiosSecure(`/featured-products`);
       return data;
     },
   });
 
-  // const acceptProducts = products.map(item);
 
   if (isLoading) return <p>hi i,m coming</p>;
   return (
@@ -48,7 +46,7 @@ const MyProducts = () => {
                 <UserProductTable key={index} item={item} />
               ))} */}
             {products.map((item, index) => (
-              <UserProductTable key={index} item={item} />
+              <UserProductTable refetch={refetch} key={index} item={item} />
             ))}
           </tbody>
         </table>
