@@ -5,7 +5,7 @@ import { GoReport } from "react-icons/go";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 
-const DetailsCard = ({ product, setRating, handleReview }) => {
+const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
   const axiosPublic = useAxiosPublic();
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -29,11 +29,21 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
       const { data } = await axiosPublic.post("/reports", newReport);
       if (data.insertedId) {
         toast.success("Report send");
+        refetch();
       } else {
         toast.error(data);
       }
     } catch (error) {
       toast.error(error.message);
+    }
+  };
+
+  const handleVote = async () => {
+    try {
+      await axiosPublic.patch(`/featured/product/${_id}`);
+      refetch();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -58,7 +68,9 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
                   <FaExternalLinkAlt />
                   Visit
                 </Link>
-                <button className="btn">Upvote {vote}</button>
+                <button onClick={handleVote} className="btn">
+                  Upvote {vote}
+                </button>
               </div>
             </div>
           </div>

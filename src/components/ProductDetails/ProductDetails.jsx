@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [rating, setRating] = useState(0);
 
-  const { data: product = {} } = useQuery({
+  const { data: product = {}, refetch } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
       const { data } = await axiosSecure(`/product/${id}`);
@@ -50,6 +50,7 @@ const ProductDetails = () => {
         handleReview={handleReview}
         setRating={setRating}
         product={product}
+        refetch={refetch}
       />
       <ReviewPost />
     </div>
