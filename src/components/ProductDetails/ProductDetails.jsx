@@ -5,12 +5,14 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import DetailsCard from "./DetailsCard";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import ReviewPost from "./ReviewPost";
 
 const ProductDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [rating, setRating] = useState(0);
+
   const { data: product = {} } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
@@ -49,6 +51,7 @@ const ProductDetails = () => {
         setRating={setRating}
         product={product}
       />
+      <ReviewPost />
     </div>
   );
 };

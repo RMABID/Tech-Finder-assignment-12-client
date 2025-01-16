@@ -1,6 +1,5 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
-import { FiEdit } from "react-icons/fi";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";

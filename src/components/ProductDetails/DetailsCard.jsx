@@ -38,42 +38,42 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
   };
 
   return (
-    <div className="flex  gap-2">
-      <div className="flex w-8/12 border flex-col">
-        <div className="flex gap-8">
-          <img className="w-40" src={product_image} alt={product_name} />
-          <div>
-            <h3 className="text-xl mt-3 font-bold">{product_name}</h3>
+    <div className="md:flex  gap-2">
+      <div className="flex  justify-between md:w-8/12 border ">
+        <div className="flex flex-col">
+          <div className="flex md:gap-8 gap-3">
+            <img className="w-40" src={product_image} alt={product_name} />
+            <div>
+              <h3 className="text-xl mt-3 font-bold">{product_name}</h3>
 
-            <div className="flex  items-center gap-x-3">
-              {tag?.map((item, index) => (
-                <Link key={index} className="underline">
-                  {item.text}
+              <div className="flex  items-center gap-x-3">
+                {tag?.map((item, index) => (
+                  <Link key={index} className="underline">
+                    {item.text}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex my-14 md:gap-8">
+                <Link to={external_links} className="btn">
+                  <FaExternalLinkAlt />
+                  Visit
                 </Link>
-              ))}
+                <button className="btn">Upvote {vote}</button>
+              </div>
             </div>
-            <div className="flex my-14 gap-8">
-              <Link to={external_links} className="btn">
-                <FaExternalLinkAlt />
-                Visit
-              </Link>
-              <button className="btn">Upvote {vote}</button>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="flex justify-end">
-            <button
-              onClick={handleReport}
-              className="btn -mt-56 text-xl text-red-500"
-            >
-              <GoReport />
-            </button>
           </div>
           <p>{description}</p>
         </div>
+        <div className="">
+          <button
+            onClick={handleReport}
+            className="btn -mt-52 text-xl text-red-500"
+          >
+            <GoReport />
+          </button>
+        </div>
       </div>
-      <div className="w-4/12 border p-2">
+      <div className="md:w-4/12 border p-2">
         <form onSubmit={handleReview} className="flex flex-col gap-y-5">
           <textarea
             name="review"
@@ -91,7 +91,7 @@ const DetailsCard = ({ product, setRating, handleReview }) => {
           />
 
           <button className="btn mt-5" type="submit">
-            Submit
+            Comment
           </button>
         </form>
       </div>
