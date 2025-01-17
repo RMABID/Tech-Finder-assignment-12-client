@@ -51,7 +51,6 @@ const UpdateProductForm = ({ product }) => {
     const description = form.description.value;
     const image = form.image.files[0];
     const product_image = await imageUpload(image);
-    console.log(product_image);
     const updateProduct = {
       product_name,
       product_image,

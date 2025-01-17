@@ -16,7 +16,6 @@ const ReviewPost = ({ id }) => {
       return data;
     },
   });
-  console.log(reviews);
   return (
     <div className="my-20">
       <div className="mx-auto max-w-2xl md:text-center">

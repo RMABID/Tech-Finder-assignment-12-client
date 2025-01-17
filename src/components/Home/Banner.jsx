@@ -1,8 +1,8 @@
-import banner from "../../assets/images.png";
+import banner from "../../assets/product-hunter banner.jpg";
 const Banner = () => {
   return (
-    <div>
-      <img className="w-full" src={banner} alt="" />
+    <div className="min-h-[450px]">
+      <img className="" src={banner} alt="" />
     </div>
   );
 };

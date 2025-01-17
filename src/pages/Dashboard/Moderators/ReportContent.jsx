@@ -38,7 +38,7 @@ const ReportContent = () => {
         }
       });
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
   return (

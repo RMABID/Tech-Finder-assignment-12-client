@@ -26,10 +26,9 @@ const FeaturedProducts = () => {
       await axiosPublic.patch(`/featured/product/${_id}`);
       refetch();
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
-  console.log(product);
   return (
     <section>
       <h1 className="text-center text-4xl my-3">Featured Products</h1>

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UsersTable from "../../../components/Dashboard/Tables/UsersTable";
-import useRole from "../../../hooks/useRole";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -17,9 +16,6 @@ const ManageUsers = () => {
       return data;
     },
   });
-
-  const [role] = useRole();
-  console.log(role);
 
   return (
     <div>

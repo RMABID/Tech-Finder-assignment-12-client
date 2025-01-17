@@ -11,7 +11,6 @@ const AllProducts = () => {
       return data;
     },
   });
-  console.log(all_products);
   return (
     <section>
       <div>

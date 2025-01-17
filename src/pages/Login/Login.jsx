@@ -20,7 +20,7 @@ const Login = () => {
       await signIn(email, password);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
   const handleGoogleLogin = async () => {
@@ -28,7 +28,6 @@ const Login = () => {
       await loginGoogle();
       toast.success("SuccessFully Login");
     } catch (error) {
-      console.log(error);
       toast.error(error.message);
     }
   };
