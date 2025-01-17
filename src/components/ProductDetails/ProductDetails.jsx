@@ -6,6 +6,7 @@ import DetailsCard from "./DetailsCard";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import ReviewPost from "./ReviewPost";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const { user } = useAuth();
@@ -36,11 +37,12 @@ const ProductDetails = () => {
       },
     };
 
-    // console.table();
     try {
       await axiosSecure.post("/review", newReview);
+      toast.success("Your Commit Send");
+      refetch();
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 

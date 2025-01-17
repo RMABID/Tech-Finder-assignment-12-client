@@ -4,8 +4,10 @@ import ReactStars from "react-rating-stars-component";
 import { GoReport } from "react-icons/go";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -18,6 +20,7 @@ const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
     tag,
     vote,
     _id,
+    owner_info,
   } = product;
 
   const handleReport = async () => {
@@ -39,11 +42,14 @@ const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
   };
 
   const handleVote = async () => {
+    if (user?.email === owner_info.email) {
+      return toast.error("You can't vote on your own product!");
+    }
     try {
       await axiosPublic.patch(`/featured/product/${_id}`);
       refetch();
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 
