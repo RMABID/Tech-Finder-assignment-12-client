@@ -2,13 +2,18 @@ import { IoLogoGithub, IoLogoGoogle } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/useAuth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import login_img from "../../assets/logo/Enter OTP-amico.png";
+import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
 
 const Login = () => {
   const { loading, signIn, loginGoogle } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  if (loading) return <LoadingSpinier />;
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -18,7 +23,8 @@ const Login = () => {
 
     try {
       await signIn(email, password);
-      navigate("/");
+      navigate(from, { replace: true });
+      toast.success("SuccessFully Login");
     } catch (error) {
       toast.error(error);
     }
@@ -27,6 +33,7 @@ const Login = () => {
     try {
       await loginGoogle();
       toast.success("SuccessFully Login");
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
     }
@@ -80,7 +87,7 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn bg-[#D1A054B3] text-white text-lg font-medium rounded-md">
+                <button className="btn bg-[#c42fc9b3] text-white text-lg font-medium rounded-md">
                   {loading ? (
                     <TbFidgetSpinner className="animate-spin m-auto" />
                   ) : (

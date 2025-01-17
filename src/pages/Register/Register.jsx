@@ -6,12 +6,14 @@ import useAuth from "../../hooks/useAuth";
 import imageUpload from "../../api/utils";
 import toast from "react-hot-toast";
 import signup_img from "../../assets/logo/Sign up-rafiki.png";
+import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
 
 const Register = () => {
   const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  //   const from = location.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
+  if (loading) return <LoadingSpinier />;
 
   const handleSignRegister = async (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ const Register = () => {
       const result = await createUser(email, password);
       await updateUserProfile(name, photoURL);
       toast.success("SuccessFully Login");
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
     }
@@ -35,6 +38,7 @@ const Register = () => {
     try {
       await loginGoogle();
       toast.success("SuccessFully Login");
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
     }
@@ -84,7 +88,7 @@ const Register = () => {
                   required
                 />
                 <label className="label">
-                  <Link  className="label-text-alt link link-hover">
+                  <Link className="label-text-alt link link-hover">
                     Forgot password?
                   </Link>
                 </label>
@@ -102,7 +106,7 @@ const Register = () => {
                 />
               </div>
               <div className="form-control mt-2">
-                <button className="btn bg-[#D1A054B3] text-white text-lg font-medium rounded-md">
+                <button className="btn bg-[#c42fc9b3] text-white text-lg font-medium rounded-md">
                   {loading ? (
                     <TbFidgetSpinner className="animate-spin m-auto" />
                   ) : (

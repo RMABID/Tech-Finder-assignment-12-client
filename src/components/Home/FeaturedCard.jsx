@@ -1,6 +1,7 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { MdOutlineHowToVote } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Button from "../Shared/Button";
 
 const FeaturedCard = ({ item, handleVote }) => {
   const {
@@ -14,10 +15,10 @@ const FeaturedCard = ({ item, handleVote }) => {
   } = item;
 
   return (
-    <div className="flex gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300 border-2 border-gray-700 p-2">
+    <section className="flex border-b gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300  border-gray-700 p-2">
       <Link to={`/product-details/${_id}`} className="flex gap-x-3">
         <img
-          className="w-20 h-20 object-cover"
+          className="w-20 h-20 rounded-xl object-cover"
           src={product_image}
           alt={product_name}
         />
@@ -41,14 +42,15 @@ const FeaturedCard = ({ item, handleVote }) => {
         </div>
       </Link>
       <div className="flex justify-end">
-        <button
+        <Button
+          text={vote}
+          small={'small'}
+          icon={MdOutlineHowToVote}
           onClick={() => handleVote(_id, owner_info)}
-          className="btn flex justify-end"
-        >
-          {vote} <MdOutlineHowToVote />
-        </button>
+          className="btn w-10 rounded-full flex justify-end"
+        ></Button>
       </div>
-    </div>
+    </section>
   );
 };
 

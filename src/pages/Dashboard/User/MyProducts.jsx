@@ -19,7 +19,6 @@ const MyProducts = () => {
     },
   });
 
-
   if (isLoading) return <p>hi i,m coming</p>;
   return (
     <div>
@@ -35,16 +34,6 @@ const MyProducts = () => {
             </tr>
           </thead>
           <tbody className="text-center ">
-            {/* {products.map((item, index) =>
-              item.status === "Pending" ? (
-                <UserProductTable key={index} item={item} />
-              ) : null
-            )} */}
-            {/* {products
-              .filter((item) => item.status === "Pending")
-              .map((item, index) => (
-                <UserProductTable key={index} item={item} />
-              ))} */}
             {products.map((item, index) => (
               <UserProductTable refetch={refetch} key={index} item={item} />
             ))}

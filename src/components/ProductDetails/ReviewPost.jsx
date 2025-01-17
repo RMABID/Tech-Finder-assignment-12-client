@@ -5,23 +5,29 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useParams } from "react-router-dom";
 
-const ReviewPost = ({ id }) => {
+const ReviewPost = () => {
   const axiosPublic = useAxiosPublic();
+  const { id } = useParams();
   const { data: reviews = [], refetch } = useQuery({
-    queryKey: ["reviews"],
+    queryKey: ["reviews", id],
     queryFn: async () => {
       const { data } = await axiosPublic(`/review/${id}`);
-      refetch();
+
       return data;
     },
   });
   return (
     <div className="my-20">
       <div className="mx-auto max-w-2xl md:text-center">
-        <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-          What Our Customers Are Saying
-        </h2>
+        {reviews?.length === 0 ? (
+          ""
+        ) : (
+          <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
+            What Our Reviews Are Saying
+          </h2>
+        )}
       </div>
 
       <Swiper
@@ -64,15 +70,13 @@ const ReviewPost = ({ id }) => {
               <div className="relative rounded-2xl  p-4 shadow my-4 ">
                 <div className="relative">
                   <p className="text-lg tracking-tight text-slate-900">
-                    I love the fitness apparel and gear I purchased from this
-                    site. The quality is exceptional and the prices are
-                    unbeatable.
+                    {item?.review}
                   </p>
                 </div>
                 <div className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
                   <div>
                     <div className="font-display text-base text-slate-900">
-                      Sheryl Berge
+                      {item?.review_user?.name}
                     </div>
                   </div>
                   <div className="overflow-hidden rounded-full ">

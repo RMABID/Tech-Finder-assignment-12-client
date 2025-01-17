@@ -7,20 +7,30 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import ReviewPost from "./ReviewPost";
 import toast from "react-hot-toast";
+import LoadingSpinier from "../Spiner/LoadingSpinier";
 
 const ProductDetails = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [rating, setRating] = useState(0);
 
-  const { data: product = {}, refetch } = useQuery({
+  const {
+    data: product = {},
+    refetch,
+    isLoading,
+    isPending,
+  } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
       const { data } = await axiosSecure(`/product/${id}`);
       return data;
     },
   });
+
+  if (loading) return <LoadingSpinier />;
+  if (isPending) return <LoadingSpinier />;
+  if (isLoading) return <LoadingSpinier />;
 
   const handleReview = async (event) => {
     event.preventDefault();
@@ -47,14 +57,14 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto my-14 border p-3">
+    <div className="w-10/12 shadow mx-auto my-14 border p-3">
       <DetailsCard
         handleReview={handleReview}
         setRating={setRating}
         product={product}
         refetch={refetch}
       />
-      <ReviewPost id={id} />
+      <ReviewPost />
     </div>
   );
 };

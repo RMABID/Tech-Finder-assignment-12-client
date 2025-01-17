@@ -13,6 +13,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import ProductUpdate from "../components/Dashboard/UpdatedPages/ProductUpdate";
 import AllProducts from "../pages/AllProducts/AllProducts";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/product-details/:id",
-        element: <ProductDetails />,
+        element: (
+          <PrivateRoute>
+            <ProductDetails />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-products",

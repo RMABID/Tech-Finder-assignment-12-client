@@ -11,9 +11,10 @@ const AllProducts = () => {
       return data;
     },
   });
+  console.log(all_products);
   return (
-    <section>
-      <div>
+    <section className="w-10/12 mx-auto">
+      <div className="grid my-6 gap-8 lg:grid-cols-2">
         {all_products
           .filter((item) => item.status === "Accepted")
           .map((item, index) => (

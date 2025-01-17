@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const UserProductTable = ({ item, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { product_name, _id, status, vote } = item;
+
   const handleDeletePost = async () => {
     try {
       Swal.fire({
@@ -17,14 +18,14 @@ const UserProductTable = ({ item, refetch }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "Deleted!",
             text: "Your post has been deleted.",
             icon: "success",
           });
-          axiosSecure.delete(`/product/delete/${_id}`);
+          await axiosSecure.delete(`/product/delete/${_id}`);
           toast.success("Post delete successfully");
           refetch();
         }
