@@ -44,6 +44,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      //user create in database
       if (currentUser?.email) {
         const userInFo = {
           name: currentUser?.displayName,
@@ -51,12 +52,23 @@ const AuthProvider = ({ children }) => {
         };
         await axiosPublic.post("/users", userInFo);
       }
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+      }
+
       setLoading(false);
     });
     return () => {
       return subscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   const value = {
     createUser,

@@ -54,7 +54,7 @@ const ProductDetails = () => {
         product={product}
         refetch={refetch}
       />
-      <ReviewPost />
+      <ReviewPost id={id} />
     </div>
   );
 };

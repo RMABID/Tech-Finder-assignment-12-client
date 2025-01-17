@@ -6,12 +6,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const ReviewPost = () => {
+const ReviewPost = ({ id }) => {
   const axiosPublic = useAxiosPublic();
-  const { data: reviews = [] } = useQuery({
+  const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const { data } = await axiosPublic("/review");
+      const { data } = await axiosPublic(`/review/${id}`);
+      refetch();
       return data;
     },
   });
@@ -19,10 +20,10 @@ const ReviewPost = () => {
   return (
     <div className="my-20">
       <div className="mx-auto max-w-2xl md:text-center">
-            <h2 class="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-              What Our Customers Are Saying
-            </h2>
-          </div>
+        <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
+          What Our Customers Are Saying
+        </h2>
+      </div>
 
       <Swiper
         slidesPerView={1}
@@ -55,8 +56,11 @@ const ReviewPost = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {reviews.map((item) => (
-          <SwiperSlide className="flex flex-col gap-3 gap-y-6 sm:gap-y-8">
+        {reviews.map((item, index) => (
+          <SwiperSlide
+            key={index}
+            className="flex flex-col gap-3 gap-y-6 sm:gap-y-8"
+          >
             <li>
               <div className="relative rounded-2xl  p-4 shadow my-4 ">
                 <div className="relative">
@@ -76,7 +80,7 @@ const ReviewPost = () => {
                     <img
                       alt=""
                       className="h-14 w-14 object-cover"
-                      src="https://randomuser.me/api/portraits/men/15.jpg"
+                      src={item?.review_user?.image}
                     />
                   </div>
                 </div>

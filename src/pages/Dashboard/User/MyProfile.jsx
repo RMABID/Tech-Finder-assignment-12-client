@@ -4,31 +4,27 @@ const MyProfile = () => {
   const { user } = useAuth();
 
   return (
-    <section className="">
-      <div className="flex bg-green-300 p-4 w-10/12 gap-x-12">
+    <section className="flex bg-purple-100 items-center justify-around">
+      <div className="flex items-center  p-4 w-10/12 gap-x-4">
         <div>
           <img
-            className="w-48 h-48 object-cover rounded-full"
+            className="w-28 h-28 object-cover rounded-full"
             src={user?.photoURL}
             alt=""
           />
         </div>
         <div>
-          <h1 className="text-2xl">User Profile</h1>
           <div>
-            <p>
-              Name : <span>{user?.displayName}</span>
-            </p>
-            <p>
-              Email : <span>{user?.email}</span>
-            </p>
-          </div>
-          <div>
-            <button className="btn">Subscribed $50</button>
-            <p>Verified</p>
+            <p className="text-xl font-medium">{user?.displayName}</p>
+            <p>Role : {'User'}</p>
+            <p>{user?.email}</p>
           </div>
         </div>
       </div>
+          <div className="flex px-12 items-center gap-6">
+            <p>Verified</p>
+            <button className="btn">Subscribed $50</button>
+          </div>
     </section>
   );
 };

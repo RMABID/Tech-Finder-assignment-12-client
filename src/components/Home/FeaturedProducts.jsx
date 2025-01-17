@@ -1,8 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import FeaturedCard from "./FeaturedCard";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const FeaturedProducts = () => {
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const {
     data: product = [],
@@ -15,7 +18,10 @@ const FeaturedProducts = () => {
       return data;
     },
   });
-  const handleVote = async (_id) => {
+  const handleVote = async (_id, owner_info) => {
+    if (user?.email === owner_info.email) {
+      return toast.error("You can't vote on your own product!");
+    }
     try {
       await axiosPublic.patch(`/featured/product/${_id}`);
       refetch();

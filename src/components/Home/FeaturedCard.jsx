@@ -3,7 +3,15 @@ import { MdOutlineHowToVote } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ item, handleVote }) => {
-  const { product_name, product_image, tag, vote, _id, external_links } = item;
+  const {
+    product_name,
+    product_image,
+    tag,
+    vote,
+    _id,
+    external_links,
+    owner_info,
+  } = item;
 
   return (
     <div className="flex gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300 border-2 border-gray-700 p-2">
@@ -24,7 +32,7 @@ const FeaturedCard = ({ item, handleVote }) => {
             </span>{" "}
           </Link>
           <div className="flex gap-x-3">
-            {tag.map((item, index) => (
+            {tag?.map((item, index) => (
               <Link key={index} className="underline">
                 {item?.text}
               </Link>
@@ -34,7 +42,7 @@ const FeaturedCard = ({ item, handleVote }) => {
       </Link>
       <div className="flex justify-end">
         <button
-          onClick={() => handleVote(_id)}
+          onClick={() => handleVote(_id, owner_info)}
           className="btn flex justify-end"
         >
           {vote} <MdOutlineHowToVote />
