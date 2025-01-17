@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UserProductTable from "../../../components/Dashboard/Tables/UserProductTable";
+import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
 
 const MyProducts = () => {
   const { user } = useAuth();
@@ -19,13 +20,13 @@ const MyProducts = () => {
     },
   });
 
-  if (isLoading) return <p>hi i,m coming</p>;
+  if (isLoading) return <LoadingSpinier />;
   return (
     <div>
       <div className="overflow-x-auto">
         <table className="table border">
           {/* head */}
-          <thead className="h-16 text-[15px] text-center">
+          <thead className="h-16 bg-gray-100 text-[15px] text-center">
             <tr>
               <th>Name</th>
               <th>Votes</th>

@@ -1,23 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useParams } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import LoadingSpinier from "../Spiner/LoadingSpinier";
 
 const ReviewPost = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
-  const { data: reviews = [], refetch } = useQuery({
+  const {
+    data: reviews = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["reviews", id],
     queryFn: async () => {
-      const { data } = await axiosPublic(`/review/${id}`);
+      const { data } = await axiosSecure(`/review/${id}`);
 
       return data;
     },
   });
+
+  if (isLoading) return <LoadingSpinier />;
   return (
     <div className="my-20">
       <div className="mx-auto max-w-2xl md:text-center">

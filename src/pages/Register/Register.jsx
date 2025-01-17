@@ -7,6 +7,7 @@ import imageUpload from "../../api/utils";
 import toast from "react-hot-toast";
 import signup_img from "../../assets/logo/Sign up-rafiki.png";
 import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
+import bg from "../../../dist/assets/add product img-DyBTJtIQ.jpeg";
 
 const Register = () => {
   const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();
@@ -45,7 +46,10 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-login_bg bg-center bg-cover bg-no-repeat">
+    <div
+      style={{ backgroundImage: `url(${bg})` }}
+      className=" bg-center bg-cover bg-no-repeat"
+    >
       <div className="py-24">
         <div className="md:flex bg-white md:w-[960px] rounded-xl px-8 justify-center  py-6 mx-auto  shrink-0 shadow-xl">
           <div className="  w-full max-w-sm">

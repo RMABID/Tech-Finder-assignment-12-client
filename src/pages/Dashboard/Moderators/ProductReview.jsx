@@ -45,7 +45,7 @@ const ProductReview = () => {
       <div className="overflow-x-auto">
         <table className="table border">
           {/* head */}
-          <thead className="h-16 text-[15px] text-center">
+          <thead className="h-16 bg-gray-200 text-[15px] text-center">
             <tr>
               <th>Name</th>
               <th>View Details</th>

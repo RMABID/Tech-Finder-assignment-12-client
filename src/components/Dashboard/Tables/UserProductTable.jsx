@@ -47,10 +47,16 @@ const UserProductTable = ({ item, refetch }) => {
       </td>
       <th>
         <div className="flex items-center justify-center">
-          <Link to={`/dashboard/my-product/${_id}`} className="btn btn-ghost ">
+          <Link
+            to={`/dashboard/my-product/${_id}`}
+            className="btn text-lg btn-ghost "
+          >
             <FiEdit />
           </Link>
-          <button onClick={handleDeletePost} className="btn btn-ghost ">
+          <button
+            onClick={handleDeletePost}
+            className="btn text-red-500 text-lg btn-ghost "
+          >
             <FaRegTrashAlt />
           </button>
         </div>

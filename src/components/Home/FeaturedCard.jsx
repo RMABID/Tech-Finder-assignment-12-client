@@ -44,7 +44,7 @@ const FeaturedCard = ({ item, handleVote }) => {
       <div className="flex justify-end">
         <Button
           text={vote}
-          small={'small'}
+          small={true}
           icon={MdOutlineHowToVote}
           onClick={() => handleVote(_id, owner_info)}
           className="btn w-10 rounded-full flex justify-end"

@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import login_img from "../../assets/logo/Enter OTP-amico.png";
 import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
+import bg from "../../../dist/assets/add product img-DyBTJtIQ.jpeg";
 
 const Login = () => {
   const { loading, signIn, loginGoogle } = useAuth();
@@ -40,7 +41,10 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-login_bg bg-center bg-cover bg-no-repeat h-screen">
+    <div
+      style={{ backgroundImage: `url(${bg})` }}
+      className="bg-center bg-cover bg-no-repeat h-screen"
+    >
       <div className="py-24">
         <div className="md:flex bg-white md:w-[960px] rounded-xl py-12 mx-auto justify-evenly shrink-0 shadow-2xl">
           <div className="text-center  lg:text-left">

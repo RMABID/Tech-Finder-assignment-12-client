@@ -8,14 +8,14 @@ const ReportTable = ({ item, handleDeleteReport }) => {
     <tr>
       <td>{product_name}</td>
       <td>
-        <Link to={`/product-details/${post_id}`} className="btn">
+        <Link to={`/product-details/${post_id}`} className="btn btn-ghost text-xl">
           <FcViewDetails />
         </Link>
       </td>
       <td>
         <button
           onClick={() => handleDeleteReport(_id, post_id)}
-          className="btn"
+          className="btn text-red-400 btn-ghost text-xl"
         >
           <FaRegTrashAlt />
         </button>

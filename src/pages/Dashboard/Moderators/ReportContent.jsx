@@ -3,16 +3,23 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ReportTable from "../../../components/Dashboard/Tables/ReportTable";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
 
 const ReportContent = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: reports = [], refetch } = useQuery({
+  const {
+    data: reports = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["reports"],
     queryFn: async () => {
       const { data } = await axiosSecure("/reports");
       return data;
     },
   });
+
+  if (isLoading) return <LoadingSpinier />;
 
   const handleDeleteReport = async (id, post_id) => {
     try {
@@ -23,16 +30,16 @@ const ReportContent = () => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "Deleted!",
             text: "Your post has been deleted.",
             icon: "success",
           });
-          axiosSecure.delete(`/product/delete/${post_id}`);
+          await axiosSecure.delete(`/product/delete/${post_id}`);
           refetch();
-          axiosSecure.delete(`/report/${id}`);
+          await axiosSecure.delete(`/report/${id}`);
           toast.success("Report post delete successfully");
           refetch();
         }
@@ -46,7 +53,7 @@ const ReportContent = () => {
       <div className="overflow-x-auto">
         <table className="table border">
           {/* head */}
-          <thead className="h-16 text-[15px] ">
+          <thead className="h-16 bg-gray-200 text-[15px] ">
             <tr>
               <th>Name</th>
               <th>Detail</th>

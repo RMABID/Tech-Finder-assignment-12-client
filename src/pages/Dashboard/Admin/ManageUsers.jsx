@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UsersTable from "../../../components/Dashboard/Tables/UsersTable";
+import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,13 +17,13 @@ const ManageUsers = () => {
       return data;
     },
   });
-
+  if (isLoading) return <LoadingSpinier />;
   return (
     <div>
       <div className="overflow-x-auto">
         <table className="table border">
           {/* head */}
-          <thead className="h-16 text-[15px] text-center">
+          <thead className="h-16 bg-gray-200 text-[15px] text-center">
             <tr>
               <th>Name</th>
               <th>Email</th>

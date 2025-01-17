@@ -10,16 +10,21 @@ const ReviewTable = ({ item, handleAcceptPost, handleAddFeatured }) => {
     <tr>
       <td>{product_name}</td>
       <td>
-        <Link to={`/product-details/${_id}`} className="btn">
+        <Link to={`/product-details/${_id}`} className="btn text-xl">
           <FcViewDetails />
         </Link>
       </td>
+
       <td>
         <button onClick={() => handleAddFeatured(_id)} className="btn">
           {featured && featured === "Added" ? (
-            <IoCheckmarkDoneSharp />
+            <span className="text-green-600 text-xl">
+              <IoCheckmarkDoneSharp />
+            </span>
           ) : (
-            <IoMdCheckmark />
+            <span>
+              <IoMdCheckmark />
+            </span>
           )}
         </button>
       </td>
