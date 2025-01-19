@@ -3,7 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutFrom from "../Form/CheckoutFrom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KEY);
-const PaymentModal = () => {
+const PaymentModal = ({ refetch }) => {
   return (
     <div>
       <dialog id="my_modal_1" className="modal">
@@ -12,7 +12,7 @@ const PaymentModal = () => {
           <p className="py-4 text-center">Membership Subscribe Amount</p>
           <p className="text-center">Pay Amount : 50</p>
           <Elements stripe={stripePromise}>
-            <CheckoutFrom />
+            <CheckoutFrom refetch={refetch} />
           </Elements>
           <div className="modal-action">
             <form method="dialog">

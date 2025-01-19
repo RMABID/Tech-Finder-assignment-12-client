@@ -2,11 +2,28 @@ import { useState } from "react";
 import PaymentModal from "../../../components/Modal/PaymentModal";
 import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
 import useAuth from "../../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyProfile = () => {
+  const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
 
-  if (loading) return <LoadingSpinier />;
+  const {
+    data: paymentStatus = {},
+    refetch,
+    isPending,
+    isLoading,
+  } = useQuery({
+    queryKey: ["payment", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/user/${user?.email}`);
+      return data;
+    },
+  });
+  console.log(paymentStatus);
+
+  if (loading || isLoading || isPending) return <LoadingSpinier />;
 
   const handlePay = async () => {
     document.getElementById("my_modal_1").showModal();
@@ -25,18 +42,21 @@ const MyProfile = () => {
         <div>
           <div>
             <p className="text-xl font-medium">{user?.displayName}</p>
-            <p>Role : {"User"}</p>
+            <p>Role : {paymentStatus?.role}</p>
             <p>{user?.email}</p>
           </div>
         </div>
       </div>
       <div className="flex px-12 items-center gap-6">
-        <p>Verified</p>
-        <button onClick={handlePay} className="btn">
-          Subscribed $50
-        </button>
+        {paymentStatus?.status === "Verified" ? (
+          <p>{paymentStatus?.status} </p>
+        ) : (
+          <button onClick={handlePay} className="btn">
+            Subscribed $50
+          </button>
+        )}
       </div>
-      <PaymentModal />
+      <PaymentModal refetch={refetch} />
     </section>
   );
 };

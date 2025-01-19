@@ -14,6 +14,7 @@ import ProductDetails from "../components/ProductDetails/ProductDetails";
 import ProductUpdate from "../components/Dashboard/UpdatedPages/ProductUpdate";
 import AllProducts from "../pages/AllProducts/AllProducts";
 import PrivateRoute from "./PrivateRoute";
+import Statistics from "../pages/Dashboard/Admin/Statistics";
 
 const Routes = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const Routes = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "statistics",
+        element: <Statistics />,
       },
     ],
   },

@@ -7,7 +7,7 @@ import logo from "../../assets/logo.jpeg";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   return (
-    <nav className="border-b fixed w-full z-50">
+    <nav className="border-b fixed shadow static w-full z-50">
       <div className="flex py-4 items-center justify-evenly">
         <div>
           <Link to={"/"} className="text-2xl flex items-center font-bold">

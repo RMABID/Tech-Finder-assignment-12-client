@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 
-const CheckoutFrom = () => {
+const CheckoutFrom = ({ refetch }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -82,7 +82,10 @@ const CheckoutFrom = () => {
       };
       console.log(paymentStatus);
       await axiosSecure.post("/payment", paymentStatus);
-      await axiosSecure.patch(`/user/${user?.email}`, { status: "Verified" });
+      await axiosSecure.patch(`/user/status/${user?.email}`, {
+        status: "Verified",
+      });
+      refetch();
     }
   };
 
