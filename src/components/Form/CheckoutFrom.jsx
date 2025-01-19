@@ -107,7 +107,12 @@ const CheckoutFrom = ({ refetch }) => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe}>
+      <button
+        onClick={document.getElementById("my_modal_1")?.close()}
+        className="w-40"
+        type="submit"
+        disabled={!stripe}
+      >
         Pay
       </button>
     </form>

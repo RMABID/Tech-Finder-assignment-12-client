@@ -12,7 +12,7 @@ const AddProduct = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
-  const result = tags.map((item) => item.text);
+  // const result = tags.map((item) => item.text);
 
   // console.log({result});
 
@@ -30,7 +30,7 @@ const AddProduct = () => {
       product_image,
       external_links,
       description,
-      tag: result,
+      tag: tags,
       vote: parseInt(0),
       status: "Pending",
       featured: "Pending",
@@ -60,7 +60,7 @@ const AddProduct = () => {
   };
   // className="w-full py-96" style={{ backgroundImage: `url(${bg})` }}
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center ">
       <AddProductForm
         tags={tags}
         setTags={setTags}

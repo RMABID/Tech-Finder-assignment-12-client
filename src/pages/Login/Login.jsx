@@ -14,7 +14,7 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  if (loading) return <LoadingSpinier />;
+  // if (loading) return <LoadingSpinier />;
 
   const handleLogin = async (event) => {
     event.preventDefault();

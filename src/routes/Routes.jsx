@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Link } from "react-router-dom";
 import MainLayouts from "../layouts/MainLayouts";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
@@ -15,6 +15,7 @@ import ProductUpdate from "../components/Dashboard/UpdatedPages/ProductUpdate";
 import AllProducts from "../pages/AllProducts/AllProducts";
 import PrivateRoute from "./PrivateRoute";
 import Statistics from "../pages/Dashboard/Admin/Statistics";
+import error_img from "../assets/logo/404 Error-amico.svg";
 
 const Routes = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />,
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "my-profile",
@@ -57,33 +62,72 @@ const Routes = createBrowserRouter([
       },
       {
         path: "add-product",
-        element: <AddProduct />,
+        element: (
+          <PrivateRoute>
+            <AddProduct />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-product",
-        element: <MyProducts />,
+        element: (
+          <PrivateRoute>
+            <MyProducts />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-product/:id",
-        element: <ProductUpdate />,
+        element: (
+          <PrivateRoute>
+            <ProductUpdate />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "product-review",
-        element: <ProductReview />,
+        element: (
+          <PrivateRoute>
+            <ProductReview />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "report-contents",
-        element: <ReportContent />,
+        element: (
+          <PrivateRoute>
+            <ReportContent />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: (
+          <PrivateRoute>
+            <ManageUsers />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "statistics",
         element: <Statistics />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <div className="">
+        <img
+          className="lg:w-6/12 mx-auto object-cover"
+          src={error_img}
+          alt=""
+        />
+        <Link to={"/"} className="btn -mt-4 flex justify-center w-40 mx-auto">
+          Back to Home
+        </Link>
+      </div>
+    ),
   },
 ]);
 

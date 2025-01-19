@@ -14,7 +14,7 @@ const ProductReview = () => {
   } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/products`);
+      const { data } = await axiosSecure(`/all-products`);
       //   const { data } = await axiosSecure(`/featured-products`);
       return data;
     },

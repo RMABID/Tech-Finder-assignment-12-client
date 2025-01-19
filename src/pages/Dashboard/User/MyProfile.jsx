@@ -30,8 +30,8 @@ const MyProfile = () => {
   };
 
   return (
-    <section className="flex bg-purple-100 items-center justify-around">
-      <div className="flex items-center  p-4 w-10/12 gap-x-4">
+    <section className="md:flex-row flex flex-col justify-center space-y-4  bg-purple-100 items-center md:justify-around">
+      <div className="md:flex-row items-center  flex flex-col  space-y-4  p-4 w-10/12 gap-x-4">
         <div>
           <img
             className="w-28 h-28 object-cover rounded-full"
@@ -40,7 +40,7 @@ const MyProfile = () => {
           />
         </div>
         <div>
-          <div>
+          <div className="text-center md:text-start">
             <p className="text-xl font-medium">{user?.displayName}</p>
             <p>Role : {paymentStatus?.role}</p>
             <p>{user?.email}</p>
@@ -49,9 +49,14 @@ const MyProfile = () => {
       </div>
       <div className="flex px-12 items-center gap-6">
         {paymentStatus?.status === "Verified" ? (
-          <p>{paymentStatus?.status} </p>
+          <p className="text-xl border p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow">
+            {paymentStatus?.status}{" "}
+          </p>
         ) : (
-          <button onClick={handlePay} className="btn">
+          <button
+            onClick={handlePay}
+            className="text-xl border btn p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow"
+          >
             Subscribed $50
           </button>
         )}

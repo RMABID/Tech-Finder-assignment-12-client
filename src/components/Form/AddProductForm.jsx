@@ -1,6 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 import { WithContext as ReactTags } from "react-tag-input";
 import "../Form/tag.css";
+import Button from "../Shared/Button";
 const KeyCodes = {
   comma: 188,
   enter: 13,
@@ -100,7 +101,7 @@ const AddProductForm = ({ handleAddProduct, setTags, tags }) => {
         </div>
 
         {/* tag */}
-        <div className="">
+        <div className="md:col-span-2">
           <label className="block text-lg font-medium mb-2">Tags input :</label>
           <ReactTags
             
@@ -122,7 +123,8 @@ const AddProductForm = ({ handleAddProduct, setTags, tags }) => {
         <div className="md:col-span-2 text-xl font-rancho-font 2 text-center">
           <button
             type="submit"
-            className="btn bg-[#dfc39f] font-agu font-light text-xl hover:bg-secondary_primary hover:text-primary text-[#331A15] w-full "
+           
+            className="btn  bg-lime-500 text-white font-agu font-light text-xl hover:bg-secondary_primary hover:text-primary w-full "
           >
             Submit
           </button>

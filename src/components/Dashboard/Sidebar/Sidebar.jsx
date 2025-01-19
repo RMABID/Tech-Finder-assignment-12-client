@@ -9,10 +9,12 @@ import Admin from "../Menu/Admin";
 import { RxCross1 } from "react-icons/rx";
 import useRole from "../../../hooks/useRole";
 import LoadingSpinier from "../../Spiner/LoadingSpinier";
+import useAuth from "../../../hooks/useAuth";
 const Sidebar = () => {
+  const { logOut } = useAuth();
   const [role, isPending, isLoading] = useRole();
   const [isActive, setActive] = useState(false);
-  console.log(isLoading);
+
   const handleToggle = () => {
     setActive(!isActive);
   };
@@ -64,13 +66,13 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
               {/*  Menu Items */}
-              {/* {role === "User" && <User />}
+              {role === "User" && <User />}
               {role === "Moderator" && <Moderator />}
-              {role === "Admin" && <Admin />} */}
-             
-              <User />
+              {role === "Admin" && <Admin />}
+
+              {/* <User />
               <Moderator />
-              <Admin />
+              <Admin /> */}
             </nav>
           </div>
         </div>
@@ -78,7 +80,10 @@ const Sidebar = () => {
         <div>
           <hr />
 
-          <button className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform">
+          <button
+            onClick={logOut}
+            className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+          >
             <GrLogout className="w-5 h-5" />
 
             <span className="mx-4 font-medium">Logout</span>

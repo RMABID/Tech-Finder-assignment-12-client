@@ -57,7 +57,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="w-10/12 shadow mx-auto my-14 border p-3">
+    <div className="md:w-10/12 w-11/12 shadow mx-auto my-14 border p-3">
       <DetailsCard
         handleReview={handleReview}
         setRating={setRating}
