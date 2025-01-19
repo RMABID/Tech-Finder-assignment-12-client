@@ -2,16 +2,19 @@ import { useState } from "react";
 import AddProductForm from "../../../components/Form/AddProductForm";
 import imageUpload from "../../../api/utils";
 import useAuth from "../../../hooks/useAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
-import bg from "../../../assets/img/add product img.jpeg";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [tags, setTags] = useState([]);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+
+  const result = tags.map((item) => item.text);
+
+  // console.log({result});
 
   const handleAddProduct = async (event) => {
     event.preventDefault();
@@ -27,9 +30,10 @@ const AddProduct = () => {
       product_image,
       external_links,
       description,
-      tag: tags,
+      tag: result,
       vote: parseInt(0),
       status: "Pending",
+      featured: "Pending",
       owner_info: {
         name: user?.displayName,
         email: user?.email,
@@ -38,11 +42,19 @@ const AddProduct = () => {
     };
     // console.table(newProduct);
     try {
-      await axiosSecure.post("/products", newProduct);
-      toast.success("Product Successfully Added");
-      navigate("/dashboard/my-product");
+      const { data } = await axiosPublic.post("/products", {
+        newProduct,
+        email: user?.email,
+      });
+
+      if (data?.insertedId) {
+        toast.success("Product Successfully Added");
+      } else {
+        toast.error(data);
+      }
+      // navigate("/dashboard/my-product");
     } catch (error) {
-      // console.log(error);
+      // console.log(error.response.data);
       toast.error(error.message);
     }
   };

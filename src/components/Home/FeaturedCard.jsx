@@ -13,7 +13,6 @@ const FeaturedCard = ({ item, handleVote }) => {
     external_links,
     owner_info,
   } = item;
-
   return (
     <section className="flex border-b gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300  border-gray-700 p-2">
       <Link to={`/product-details/${_id}`} className="flex gap-x-3">

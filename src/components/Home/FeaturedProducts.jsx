@@ -14,10 +14,11 @@ const FeaturedProducts = () => {
   } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const { data } = await axiosPublic("/featured-products");
+      const { data } = await axiosPublic("/featured/products");
       return data;
     },
   });
+
   const handleVote = async (_id, owner_info) => {
     if (user?.email === owner_info.email) {
       return toast.error("You can't vote on your own product!");
@@ -29,6 +30,8 @@ const FeaturedProducts = () => {
       toast.error(error);
     }
   };
+  
+  console.log(product);
   return (
     <section>
       <div className="lg:w-4/6 mx-auto">
@@ -42,7 +45,7 @@ const FeaturedProducts = () => {
       </div>
       <div className="grid my-16 gap-8 lg:grid-cols-2">
         {product
-          .filter((item) => item.featured === "Added")
+          // .filter((item) => item?.featured === "Added")
           .map((item, index) => (
             <FeaturedCard handleVote={handleVote} key={index} item={item} />
           ))}

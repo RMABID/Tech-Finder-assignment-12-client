@@ -7,7 +7,7 @@ import imageUpload from "../../api/utils";
 import toast from "react-hot-toast";
 import signup_img from "../../assets/logo/Sign up-rafiki.png";
 import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
-import bg from "../../../dist/assets/add product img-DyBTJtIQ.jpeg";
+import bg from "../../assets/img/add product img.jpeg";
 
 const Register = () => {
   const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();

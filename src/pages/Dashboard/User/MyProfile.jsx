@@ -1,9 +1,16 @@
+import { useState } from "react";
+import PaymentModal from "../../../components/Modal/PaymentModal";
 import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
 import useAuth from "../../../hooks/useAuth";
 
 const MyProfile = () => {
   const { user, loading } = useAuth();
+
   if (loading) return <LoadingSpinier />;
+
+  const handlePay = async () => {
+    document.getElementById("my_modal_1").showModal();
+  };
 
   return (
     <section className="flex bg-purple-100 items-center justify-around">
@@ -25,8 +32,11 @@ const MyProfile = () => {
       </div>
       <div className="flex px-12 items-center gap-6">
         <p>Verified</p>
-        <button className="btn">Subscribed $50</button>
+        <button onClick={handlePay} className="btn">
+          Subscribed $50
+        </button>
       </div>
+      <PaymentModal />
     </section>
   );
 };

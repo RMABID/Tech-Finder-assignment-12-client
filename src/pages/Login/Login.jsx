@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import login_img from "../../assets/logo/Enter OTP-amico.png";
 import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
-import bg from "../../../dist/assets/add product img-DyBTJtIQ.jpeg";
+import bg from "../../assets/img/add product img.jpeg";
 
 const Login = () => {
   const { loading, signIn, loginGoogle } = useAuth();
