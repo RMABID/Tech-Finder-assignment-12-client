@@ -45,13 +45,7 @@ const AuthProvider = ({ children }) => {
     const subscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       //user create in database
-      if (currentUser?.email) {
-        const userInFo = {
-          name: currentUser?.displayName,
-          email: currentUser?.email,
-        };
-        await axiosPublic.post("/users", userInFo);
-      }
+      
       if (currentUser) {
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {

@@ -2,6 +2,7 @@ import React from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import FeaturedCard from "./FeaturedCard";
+import { Link } from "react-router-dom";
 
 const TrendingProducts = () => {
   const axiosPublic = useAxiosPublic();
@@ -29,6 +30,16 @@ const TrendingProducts = () => {
           <FeaturedCard key={index} item={item} />
         ))}
       </div>
+      <div>
+        <Link
+          to={"/all-products"}
+          className="btn flex justify-center w-40 mx-auto"
+        >
+          See all
+        </Link>
+      </div>
+
+
     </section>
   );
 };

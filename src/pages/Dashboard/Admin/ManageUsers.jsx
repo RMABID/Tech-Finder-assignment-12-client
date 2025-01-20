@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UsersTable from "../../../components/Dashboard/Tables/UsersTable";
 import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
+import useAuth from "../../../hooks/useAuth";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const {
     data: users = [],
@@ -13,7 +15,7 @@ const ManageUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const { data } = await axiosSecure("/users");
+      const { data } = await axiosSecure(`/all-users/${user?.email}`);
       return data;
     },
   });

@@ -5,3 +5,8 @@
 a.active {
 color: rgb(224, 15, 15);
 }
+.selected {
+    background-color: #3dc00a;
+    color: wheat;
+  }
+  

@@ -12,3 +12,20 @@ const imageUpload = async (imageData) => {
 };
 
 export default imageUpload;
+
+export const saveUser = async (user) => {
+  console.log(user);
+  const userInFo = {
+    name: user?.displayName,
+    image: user?.photoURL,
+    email: user?.email,
+  };
+  await axios.post(`http://localhost:5000/users`, userInFo);
+};
+// if (currentUser?.email) {
+//   const userInFo = {
+//     name: currentUser?.displayName,
+//     email: currentUser?.email,
+//   };
+//   await axiosPublic.post("/users", userInFo);
+// }

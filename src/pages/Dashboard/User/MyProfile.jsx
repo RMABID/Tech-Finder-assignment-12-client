@@ -49,9 +49,11 @@ const MyProfile = () => {
       </div>
       <div className="flex px-12 items-center gap-6">
         {paymentStatus?.status === "Verified" ? (
-          <p className="text-xl border p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow">
-            {paymentStatus?.status}{" "}
-          </p>
+          <dvi className="flex w-full flex-col gap-y-4">
+            <p className="text-xl border p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow">
+              {paymentStatus?.status}
+            </p>
+          </dvi>
         ) : (
           <button
             onClick={handlePay}

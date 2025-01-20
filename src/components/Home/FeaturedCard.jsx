@@ -12,6 +12,7 @@ const FeaturedCard = ({ item, handleVote }) => {
     _id,
     external_links,
     owner_info,
+    description,
   } = item;
   return (
     <section className="flex border-b gap-3 justify-between group hover:rounded-2xl hover:bg-gray-300  border-gray-700 p-2">
@@ -29,12 +30,13 @@ const FeaturedCard = ({ item, handleVote }) => {
             {product_name}{" "}
             <span className="hidden group-hover:flex">
               <FaExternalLinkAlt />
-            </span>{" "}
+            </span>
           </Link>
+          <p title={description} className="mt-3">{description.slice(0, 46)}</p>
           <div className="flex gap-x-3">
             {tag?.map((item, index) => (
               <Link key={index} className="underline">
-                {item?.text}
+                #{item?.text}
               </Link>
             ))}
           </div>

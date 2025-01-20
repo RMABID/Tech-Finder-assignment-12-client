@@ -3,18 +3,18 @@ import { FaFacebookF } from "react-icons/fa";
 import { IoLogoGithub, IoLogoGoogle } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import imageUpload from "../../api/utils";
+import imageUpload, { saveUser } from "../../api/utils";
 import toast from "react-hot-toast";
 import signup_img from "../../assets/logo/Sign up-rafiki.png";
-import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
 import bg from "../../assets/img/add product img.jpeg";
+import { useState } from "react";
 
 const Register = () => {
-  const { createUser, updateUserProfile, loading, loginGoogle } = useAuth();
+  const { createUser, updateUserProfile, loginGoogle } = useAuth();
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
-  if (loading) return <LoadingSpinier />;
 
   const handleSignRegister = async (event) => {
     event.preventDefault();
@@ -28,6 +28,7 @@ const Register = () => {
     try {
       const result = await createUser(email, password);
       await updateUserProfile(name, photoURL);
+      await saveUser({ ...result?.user, displayName: name, photoURL });
       toast.success("SuccessFully Login");
       navigate(from, { replace: true });
     } catch (error) {
@@ -37,7 +38,8 @@ const Register = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      await loginGoogle();
+      const data = await loginGoogle();
+      await saveUser(data?.user);
       toast.success("SuccessFully Login");
       navigate(from, { replace: true });
     } catch (error) {
@@ -111,11 +113,7 @@ const Register = () => {
               </div>
               <div className="form-control mt-2">
                 <button className="btn bg-[#c42fc9b3] text-white text-lg font-medium rounded-md">
-                  {loading ? (
-                    <TbFidgetSpinner className="animate-spin m-auto" />
-                  ) : (
-                    "Sign Up"
-                  )}
+                  Sign up
                 </button>
               </div>
             </form>

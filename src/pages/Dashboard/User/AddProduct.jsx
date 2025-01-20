@@ -5,11 +5,12 @@ import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [tags, setTags] = useState([]);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   // const result = tags.map((item) => item.text);
@@ -42,7 +43,7 @@ const AddProduct = () => {
     };
     // console.table(newProduct);
     try {
-      const { data } = await axiosPublic.post("/products", {
+      const { data } = await axiosSecure.post("/products", {
         newProduct,
         email: user?.email,
       });
@@ -52,13 +53,11 @@ const AddProduct = () => {
       } else {
         toast.error(data);
       }
-      // navigate("/dashboard/my-product");
+      navigate("/dashboard/my-product");
     } catch (error) {
-      // console.log(error.response.data);
       toast.error(error.message);
     }
   };
-  // className="w-full py-96" style={{ backgroundImage: `url(${bg})` }}
   return (
     <div className="flex justify-center items-center ">
       <AddProductForm
