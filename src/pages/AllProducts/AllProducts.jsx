@@ -7,13 +7,13 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinier from "../../components/Spiner/LoadingSpinier";
-
+import No_Data_img from "../../assets/logo/No data-bro.png";
 const AllProducts = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemPages, setItemPages] = useState(2);
+  const [itemPages, setItemPages] = useState(4);
   const [search, setSearch] = useState("");
 
   const { data: count = [] } = useQuery({
@@ -37,6 +37,8 @@ const AllProducts = () => {
       return data;
     },
   });
+
+  console.log(all_products);
 
   const totalCount = count?.count || 0;
   const numberOfPage = Math.ceil(totalCount / itemPages);
@@ -70,36 +72,50 @@ const AllProducts = () => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  const handleRefetch = async () => {
+    setSearch("");
+    setItemPages(4);
+    setCurrentPage(0);
+  };
   return (
     <section className="w-10/12 relative mx-auto">
-      <SearchBar setSearch={setSearch} />
-      <div className="grid my-6 gap-8 lg:grid-cols-2">
-        {all_products
-          ?.filter((item) => item.status === "Accepted")
-          .map((item, index) => (
-            <FeaturedCard handleVote={handleVote} key={index} item={item} />
-          ))}
-      </div>
+      <SearchBar handleRefetch={handleRefetch} setSearch={setSearch} />
+      {all_products && all_products?.length === 0 ? (
+        <div className="flex justify-center">
+          <img className="lg:w-[60%]" src={No_Data_img} alt="" />
+        </div>
+      ) : (
+        <div>
+          <div className="grid my-6 gap-8 lg:grid-cols-2">
+            {all_products
+              ?.filter((item) => item.status === "Accepted")
+              .map((item, index) => (
+                <FeaturedCard handleVote={handleVote} key={index} item={item} />
+              ))}
+          </div>
 
-      <div className="join bottom-0">
-        <button onClick={handlePrev} className="join-item btn">
-          «
-        </button>
-        {pages.map((page, index) => (
-          <button
-            onClick={() => setCurrentPage(page)}
-            className={`flex space-x-3 top-0 btn  ${
-              currentPage === page ? "selected" : ""
-            }`}
-            key={index}
-          >
-            {page}
-          </button>
-        ))}
-        <button onClick={handleNext} className="join-item btn ">
-          »
-        </button>
-      </div>
+          <div className="join bottom-0">
+            <button onClick={handlePrev} className="join-item btn">
+              «
+            </button>
+            {pages.map((page, index) => (
+              <button
+                onClick={() => setCurrentPage(page)}
+                className={`flex space-x-3 top-0 btn  ${
+                  currentPage === page ? "selected" : ""
+                }`}
+                key={index}
+              >
+                {page}
+              </button>
+            ))}
+            <button onClick={handleNext} className="join-item btn ">
+              »
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

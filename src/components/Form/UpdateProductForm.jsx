@@ -170,7 +170,7 @@ const UpdateProductForm = ({ product }) => {
         <div className="md:col-span-2 text-xl font-rancho-font 2 text-center">
           <button
             type="submit"
-            className="btn bg-[#dfc39f] font-agu font-light text-xl hover:bg-secondary_primary hover:text-primary text-[#331A15] w-full "
+            className="btn bg-lime-400  text-xl hover:bg-lime-100 hover:text-primary text-black font-medium w-full "
           >
             Updated
           </button>

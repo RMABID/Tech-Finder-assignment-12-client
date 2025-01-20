@@ -20,7 +20,10 @@ export const saveUser = async (user) => {
     image: user?.photoURL,
     email: user?.email,
   };
-  await axios.post(`http://localhost:5000/users`, userInFo);
+  await axios.post(
+    `https://product-hunt-server-sigma.vercel.app/users`,
+    userInFo
+  );
 };
 // if (currentUser?.email) {
 //   const userInFo = {
