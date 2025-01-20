@@ -43,9 +43,9 @@ const ProductReview = () => {
   return (
     <div>
       <div className="overflow-x-auto">
-        <table className="table border">
+        <table className="table border border-lime-500">
           {/* head */}
-          <thead className="h-16 bg-gray-200 text-[15px] text-center">
+          <thead className="h-16 bg-lime-300 text-[15px] text-center">
             <tr>
               <th>Name</th>
               <th>View Details</th>

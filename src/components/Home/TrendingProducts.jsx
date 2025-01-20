@@ -33,7 +33,7 @@ const TrendingProducts = () => {
       <div>
         <Link
           to={"/all-products"}
-          className="btn flex justify-center w-40 mx-auto"
+          className="btn bg-lime-400 rounded-full text-white hover:text-black hover:bg-lime-200 flex justify-center w-40 mx-auto"
         >
           See all
         </Link>

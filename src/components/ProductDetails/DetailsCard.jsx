@@ -28,6 +28,7 @@ const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
     const newReport = {
       post_id: _id,
       product_name,
+      email: user?.email,
     };
     try {
       const { data } = await axiosPublic.post("/reports", newReport);
@@ -59,7 +60,11 @@ const DetailsCard = ({ product, setRating, handleReview, refetch }) => {
       <div className="flex  justify-between md:w-8/12 ">
         <div className="flex flex-col">
           <div className="flex md:gap-8 gap-1">
-            <img className="md:w-40 w-24" src={product_image} alt={product_name} />
+            <img
+              className="md:w-40 w-24"
+              src={product_image}
+              alt={product_name}
+            />
             <div>
               <h3 className="text-xl mt-3 font-bold">{product_name}</h3>
 

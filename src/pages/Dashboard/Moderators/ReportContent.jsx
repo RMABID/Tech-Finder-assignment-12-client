@@ -51,25 +51,29 @@ const ReportContent = () => {
   return (
     <section>
       <div className="overflow-x-auto">
-        <table className="table border">
-          {/* head */}
-          <thead className="h-16 bg-gray-200 text-[15px] ">
-            <tr>
-              <th>Name</th>
-              <th>Detail</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody className="text- ">
-            {reports.map((item, index) => (
-              <ReportTable
-                key={index}
-                item={item}
-                handleDeleteReport={handleDeleteReport}
-              />
-            ))}
-          </tbody>
-        </table>
+        {reports && reports.length === 0 ? (
+          <p className="text-5xl text-center text-red-400 mt-16 ">No report Available</p>
+        ) : (
+          <table className="table border-lime-500 border">
+            {/* head */}
+            <thead className="h-16 bg-lime-300 text-[15px] ">
+              <tr>
+                <th>Name</th>
+                <th>Detail</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody className="text- ">
+              {reports.map((item, index) => (
+                <ReportTable
+                  key={index}
+                  item={item}
+                  handleDeleteReport={handleDeleteReport}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </section>
   );

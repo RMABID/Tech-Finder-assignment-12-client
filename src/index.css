@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 a.active {
-color: rgb(224, 15, 15);
+  color: #38b805;
 }
 .selected {
-    background-color: #3dc00a;
-    color: wheat;
-  }
-  
+  background-color: #3dc00a;
+  color: wheat;
+}

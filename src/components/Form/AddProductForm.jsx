@@ -30,7 +30,7 @@ const AddProductForm = ({ handleAddProduct, setTags, tags }) => {
   };
 
   return (
-    <div>
+    <div className="">
       <form
         onSubmit={handleAddProduct}
         className="grid grid-cols-1 font-Garamond md:grid-cols-2 font-raleway-font px-4 md:px-36 mt-8  gap-6"

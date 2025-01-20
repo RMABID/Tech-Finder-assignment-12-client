@@ -49,13 +49,13 @@ const UserProductTable = ({ item, refetch }) => {
         <div className="flex items-center justify-center">
           <Link
             to={`/dashboard/my-product/${_id}`}
-            className="btn text-lg btn-ghost "
+            className="btn text-lg btn-ghost hover:bg-lime-400 "
           >
             <FiEdit />
           </Link>
           <button
             onClick={handleDeletePost}
-            className="btn text-red-500 text-lg btn-ghost "
+            className="btn text-red-500 hover:bg-red-500 hover:text-white text-lg btn-ghost "
           >
             <FaRegTrashAlt />
           </button>

@@ -30,7 +30,7 @@ const MyProfile = () => {
   };
 
   return (
-    <section className="md:flex-row flex flex-col justify-center space-y-4  bg-purple-100 items-center md:justify-around">
+    <section className="md:flex-row flex flex-col justify-center space-y-4  bg-lime-200 items-center md:justify-around">
       <div className="md:flex-row items-center  flex flex-col  space-y-4  p-4 w-10/12 gap-x-4">
         <div>
           <img
@@ -50,14 +50,14 @@ const MyProfile = () => {
       <div className="flex px-12 items-center gap-6">
         {paymentStatus?.status === "Verified" ? (
           <dvi className="flex w-full flex-col gap-y-4">
-            <p className="text-xl border p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow">
+            <p className="text-xl border p-2 rounded-full px-12 bg-white shadow text-lime-500 border-lime-400 shadow">
               {paymentStatus?.status}
             </p>
           </dvi>
         ) : (
           <button
             onClick={handlePay}
-            className="text-xl border btn p-2 rounded-full px-12 text-lime-500 border-lime-400 shadow"
+            className="text-xl border btn p-2 rounded-full px-12 bg-white text-lime-500 border-lime-400 shadow"
           >
             Subscribed $50
           </button>

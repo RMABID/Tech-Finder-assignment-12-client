@@ -12,7 +12,7 @@ const Navbar = () => {
         <div>
           <Link to={"/"} className="text-2xl flex items-center font-bold">
             <img className="w-14 border rounded-full p-1" src={logo} alt="" />
-            Product Hunt
+            Tech Finder
           </Link>
         </div>
         <div className="">
@@ -45,7 +45,10 @@ const Navbar = () => {
                   <p className="">{user?.displayName}</p>
                 </li>
                 <li>
-                  <Link to={"/dashboard"} className="flex text-md  justify-center">
+                  <Link
+                    to={"/dashboard"}
+                    className="flex text-md  justify-center"
+                  >
                     Dashboard
                   </Link>
                 </li>

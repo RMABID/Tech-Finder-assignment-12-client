@@ -16,6 +16,9 @@ import AllProducts from "../pages/AllProducts/AllProducts";
 import PrivateRoute from "./PrivateRoute";
 import Statistics from "../pages/Dashboard/Admin/Statistics";
 import error_img from "../assets/logo/404 Error-amico.svg";
+import UserRoute from "./UserRoute";
+import AdminRoute from "./AdminRoute";
+import ModeratorRoute from "./ModeratorRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -63,54 +66,72 @@ const Routes = createBrowserRouter([
       {
         path: "add-product",
         element: (
-          <PrivateRoute>
-            <AddProduct />,
-          </PrivateRoute>
+          <UserRoute>
+            <PrivateRoute>
+              <AddProduct />,
+            </PrivateRoute>
+          </UserRoute>
         ),
       },
       {
         path: "my-product",
         element: (
-          <PrivateRoute>
-            <MyProducts />,
-          </PrivateRoute>
+          <UserRoute>
+            <PrivateRoute>
+              <MyProducts />,
+            </PrivateRoute>
+          </UserRoute>
         ),
       },
       {
         path: "my-product/:id",
         element: (
-          <PrivateRoute>
-            <ProductUpdate />,
-          </PrivateRoute>
+          <UserRoute>
+            <PrivateRoute>
+              <ProductUpdate />,
+            </PrivateRoute>
+          </UserRoute>
         ),
       },
       {
         path: "product-review",
         element: (
-          <PrivateRoute>
-            <ProductReview />,
-          </PrivateRoute>
+          <ModeratorRoute>
+            <PrivateRoute>
+              <ProductReview />,
+            </PrivateRoute>
+          </ModeratorRoute>
         ),
       },
       {
         path: "report-contents",
         element: (
-          <PrivateRoute>
-            <ReportContent />,
-          </PrivateRoute>
+          <ModeratorRoute>
+            <PrivateRoute>
+              <ReportContent />,
+            </PrivateRoute>
+          </ModeratorRoute>
         ),
       },
       {
         path: "manage-users",
         element: (
-          <PrivateRoute>
-            <ManageUsers />,
-          </PrivateRoute>
+          <AdminRoute>
+            <PrivateRoute>
+              <ManageUsers />,
+            </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "statistics",
-        element: <Statistics />,
+        element: (
+          <AdminRoute>
+            <PrivateRoute>
+              <Statistics />
+            </PrivateRoute>
+          </AdminRoute>
+        ),
       },
     ],
   },

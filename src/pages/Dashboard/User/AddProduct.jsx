@@ -59,7 +59,7 @@ const AddProduct = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex justify-center  items-center ">
       <AddProductForm
         tags={tags}
         setTags={setTags}

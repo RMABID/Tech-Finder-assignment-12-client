@@ -48,7 +48,7 @@ TechFinder is a platform where users can discover, share, and interact with tech
 - **Database**: MongoDB
 - **Authentication**: Firebase Authentication
 - **Payment System**: Stripe (or another suitable service)
-- **Hosting**: Vercel for the frontend, and Render/Heroku for the backend
+- **Hosting**: Vercel for the backend , and firebase for the frontend
 
 ---
 
