@@ -4,6 +4,7 @@ import ReportTable from "../../../components/Dashboard/Tables/ReportTable";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import LoadingSpinier from "../../../components/Spiner/LoadingSpinier";
+import No_Data_img from "../../../assets/logo/No data-bro.png";
 
 const ReportContent = () => {
   const axiosSecure = useAxiosSecure();
@@ -52,7 +53,9 @@ const ReportContent = () => {
     <section>
       <div className="overflow-x-auto">
         {reports && reports.length === 0 ? (
-          <p className="text-5xl text-center text-red-400 mt-16 ">No report Available</p>
+          <div className="flex justify-center">
+            <img className="lg:w-[60%]" src={No_Data_img} alt="" />
+          </div>
         ) : (
           <table className="table border-lime-500 border">
             {/* head */}
