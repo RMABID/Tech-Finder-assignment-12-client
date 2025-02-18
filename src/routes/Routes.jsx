@@ -19,6 +19,7 @@ import error_img from "../assets/logo/404 Error-amico.svg";
 import UserRoute from "./UserRoute";
 import AdminRoute from "./AdminRoute";
 import ModeratorRoute from "./ModeratorRoute";
+import About from "../pages/About";
 
 const Routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const Routes = createBrowserRouter([
       {
         path: "/all-products",
         element: <AllProducts />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
     ],
   },

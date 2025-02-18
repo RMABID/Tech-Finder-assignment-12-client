@@ -1,7 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -54,9 +61,28 @@ const Statistics = () => {
   //   const pieChartData = chartData?.map((data) => {
   //     return { name: data?.category, value: data.revenue };
   //   });
-//   const pieChartData = {name: chartData?.user};
+  //   const pieChartData = {name: chartData?.user};
   return (
     <div>
+      <div className="stats shadow">
+        <div className="stat place-items-center">
+          <div className="stat-title">Downloads</div>
+          <div className="stat-value">31K</div>
+          <div className="stat-desc">From January 1st to February 1st</div>
+        </div>
+
+        <div className="stat place-items-center">
+          <div className="stat-title">Users</div>
+          <div className="stat-value text-secondary">4,200</div>
+          <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
+        </div>
+
+        <div className="stat place-items-center">
+          <div className="stat-title">New Registers</div>
+          <div className="stat-value">1,200</div>
+          <div className="stat-desc">↘︎ 90 (14%)</div>
+        </div>
+      </div>
       <div>
         {" "}
         <PieChart width={400} height={400}>
