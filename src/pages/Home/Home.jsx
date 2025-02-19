@@ -4,16 +4,18 @@ import FeaturedProducts from "../../components/Home/FeaturedProducts";
 import TrendingProducts from "../../components/Home/TrendingProducts";
 import NewProduct from "../../components/Home/NewProduct";
 import News from "../../components/Home/News";
+import OfferNews from "../../components/Home/OfferNews";
 
 const Home = () => {
   return (
     <section>
       <Banner></Banner>
-      <section >
+      <section>
         <FeaturedProducts />
         <TrendingProducts />
         <News />
         <NewProduct></NewProduct>
+        <OfferNews />
       </section>
     </section>
   );

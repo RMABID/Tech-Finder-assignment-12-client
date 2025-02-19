@@ -9,3 +9,8 @@ a.active {
   background-color: #3dc00a;
   color: wheat;
 }
+
+.swiper-slide {
+  border-radius: 18px;
+  
+}
