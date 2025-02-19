@@ -20,6 +20,7 @@ import UserRoute from "./UserRoute";
 import AdminRoute from "./AdminRoute";
 import ModeratorRoute from "./ModeratorRoute";
 import About from "../pages/About";
+import Blog from "../pages/Blog";
 
 const Routes = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const Routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },
