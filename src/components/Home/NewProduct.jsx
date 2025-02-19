@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import FeaturedCard from "./FeaturedCard";
 import { Link } from "react-router-dom";
 
-const TrendingProducts = () => {
+const NewProduct = () => {
   const axiosPublic = useAxiosPublic();
   const { data: Products = [] } = useQuery({
     queryKey: ["Trending Products"],
@@ -17,7 +17,7 @@ const TrendingProducts = () => {
   return (
     <section className="w-10/12 mx-auto my-6">
       <div className="lg:w-4/6 mx-auto">
-        <h1 className="text-center text-4xl my-3">Trending Products</h1>
+        <h1 className="text-center text-4xl my-3">New Products</h1>
         <p className="text-center">
           Explore a curated selection of top-rated tech products, web apps, AI
           tools, software, games, and mobile apps. Discover innovative tools,
@@ -38,10 +38,8 @@ const TrendingProducts = () => {
           See all
         </Link>
       </div>
-
-
     </section>
   );
 };
 
-export default TrendingProducts;
+export default NewProduct;

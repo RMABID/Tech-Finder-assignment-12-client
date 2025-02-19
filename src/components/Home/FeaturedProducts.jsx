@@ -40,7 +40,7 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <section className="">
+    <section className="w-10/12 mx-auto my-6">
       <div className="lg:w-4/6 mx-auto">
         <h1 className="text-center text-4xl my-3">Featured Products</h1>
         <p className="text-center">

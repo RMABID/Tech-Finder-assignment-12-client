@@ -24,6 +24,12 @@ const Navbar = () => {
             <li>
               <NavLink to="/all-products">Products</NavLink>
             </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
           </ul>
         </div>
         <div className="flex items-center">
@@ -97,6 +103,12 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavLink to="/all-products">Products</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/about">About</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/blog">Blog</NavLink>
                     </li>
                   </ul>
                 </div>

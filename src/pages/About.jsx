@@ -17,7 +17,7 @@ const About = () => {
           About Us
         </h1>
         <p className="text-lg font-light w-9/12 mx-auto">
-          Welcome to Artifact Tracker, your ultimate companion for discovering,
+          Welcome to Tech Finder, your ultimate companion for discovering,
           cataloging, and preserving historical treasures from around the world.
           Our platform is dedicated to connecting historians, collectors, and
           enthusiasts by providing a comprehensive system to track and document
