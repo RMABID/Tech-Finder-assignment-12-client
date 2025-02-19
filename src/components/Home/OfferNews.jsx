@@ -5,7 +5,8 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import { Link } from "react-router-dom";
 import slider_imag from "../../assets/img/squid game.jpeg";
-import slider_imag2 from "../../assets/img/amazon-dark.jpg";
+import slider_imag2 from "../../assets/img/pebg.jpeg";
+import slider_imag3 from "../../assets/img/free fire.jpeg";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const OfferNews = () => {
@@ -45,7 +46,7 @@ const OfferNews = () => {
             <div>
               <img
                 className="w-full md:h-[550px] h-90 object-cover"
-                src={slider_imag2}
+                src={slider_imag3}
                 alt=""
               />
             </div>
